@@ -31,10 +31,17 @@ const GeekJokeGenerator = () => {
   };
 
   return (
-    <Center>
-      <Box textAlign="center" p="6" borderRadius="md" bg="white" maxH={"250px"}>
+    <Center height="100vh">
+      <Box
+        textAlign="center"
+        p="6"
+        borderRadius="md"
+        bg="white"
+        maxH="250px"
+        overflowY="auto"
+      >
         {!joke && (
-          <Text fontSize="2xl" mb="4">
+          <Text fontSize="xl" mb="4">
             Geek Joke Generator
           </Text>
         )}
@@ -42,14 +49,7 @@ const GeekJokeGenerator = () => {
           {loading ? <Spinner size="sm" /> : "Generate Joke"}
         </Button>
         {joke && (
-          <Box
-            mt="4"
-            p="4"
-            borderRadius="md"
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
-          >
+          <Box mt="4" p="4" borderRadius="md">
             <Text fontSize="lg">{joke}</Text>
             <IconButton
               onClick={fetchJoke}
