@@ -1,6 +1,9 @@
+// src/SortableItem.js
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import ItemWrapper from "./ItemWrapper";
+import { Box, IconButton } from "@chakra-ui/react";
+import { DragHandleIcon } from "@chakra-ui/icons";
 
 const SortableItem = (props) => {
   const {
@@ -15,17 +18,22 @@ const SortableItem = (props) => {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition: transition || undefined,
+    opacity: isDragging ? 0.5 : 1,
   };
 
   return (
-    <ItemWrapper
-      ref={setNodeRef}
-      style={style}
-      withOpacity={isDragging}
-      {...props}
-      {...attributes}
-      {...listeners}
-    />
+    <Box ref={setNodeRef} style={style} display="flex" alignItems="center">
+      <ItemWrapper withOpacity={isDragging} {...props} />
+      <IconButton
+        {...attributes}
+        {...listeners}
+        aria-label="Drag handle"
+        icon={<DragHandleIcon />}
+        variant="ghost"
+        colorScheme="teal"
+        cursor="grab"
+      />
+    </Box>
   );
 };
 
