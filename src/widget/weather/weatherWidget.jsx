@@ -31,14 +31,25 @@ const WeatherWidget = () => {
     };
 
     const fetchLocation = async () => {
-      try {
-        const response = await axios.get(`https://ipapi.co/json/`);
-        const { city, latitude, longitude } = response.data;
+      const cachedLocation = localStorage.getItem("location");
+      if (cachedLocation) {
+        const { city, latitude, longitude } = JSON.parse(cachedLocation);
         setCity(city);
         fetchWeather(latitude, longitude);
-      } catch (error) {
-        console.error("Error fetching location data:", error);
-        setLoading(false);
+      } else {
+        try {
+          const response = await axios.get(`https://ipapi.co/json/`);
+          const { city, latitude, longitude } = response.data;
+          localStorage.setItem(
+            "location",
+            JSON.stringify({ city, latitude, longitude })
+          );
+          setCity(city);
+          fetchWeather(latitude, longitude);
+        } catch (error) {
+          console.error("Error fetching location data:", error);
+          setLoading(false);
+        }
       }
     };
 
