@@ -3,11 +3,12 @@ import React from "react";
 import DnDWrapper from "../components/DnDWrapper";
 import WeatherWidget from "../widget/weather/weatherWidget";
 import SpotifyWidget from "../widget/spotify/spotfiyWidget";
+import GeekJokeGenerator from "../widget/jokeGenerator/jokeGeneratorWidget";
 
 export const widgets = [
   <WeatherWidget />,
   <WeatherWidget />,
-  <WeatherWidget />,
+  <GeekJokeGenerator />,
   <SpotifyWidget />,
 ];
 
