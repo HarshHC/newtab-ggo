@@ -3,11 +3,12 @@ import React from "react";
 import DnDWrapper from "../components/DnDWrapper";
 import WeatherWidget from "../widget/weather/weatherWidget";
 import SpotifyWidget from "../widget/spotify/spotfiyWidget";
+import CatMode from "../widget/catMode";
 
 export const widgets = [
   <WeatherWidget />,
   <WeatherWidget />,
-  <WeatherWidget />,
+  <CatMode />,
   <SpotifyWidget />,
 ];
 
@@ -18,6 +19,7 @@ function NewTab() {
       bgGradient="linear-gradient(90deg, rgba(71,62,209,1) 0%, rgba(159,121,236,1) 100%)"
       minH="100vh"
       p="10"
+      overflow="hidden"
       flexDir="column"
     >
       <Flex w="100%" justify="space-between">
