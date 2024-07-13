@@ -19,7 +19,7 @@ const SCOPES = "user-top-read";
 
 const SpotifyWidget = () => {
   const [token, setToken] = useState("");
-  const [artists, setArtists] = useState([]);
+  const [tracks, setTracks] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -39,24 +39,24 @@ const SpotifyWidget = () => {
     setToken(token);
 
     if (token) {
-      fetchTopArtists(token);
+      fetchTopTracks(token);
     }
   }, []);
 
-  const fetchTopArtists = async (token) => {
+  const fetchTopTracks = async (token) => {
     try {
       const response = await axios.get(
-        "https://api.spotify.com/v1/me/top/artists?limit=5",
+        "https://api.spotify.com/v1/me/top/tracks?limit=3",
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      setArtists(response.data.items);
+      setTracks(response.data.items);
       setLoading(false);
     } catch (error) {
-      console.error("Error fetching top artists:", error);
+      console.error("Error fetching top tracks:", error);
       setLoading(false);
     }
   };
@@ -85,11 +85,8 @@ const SpotifyWidget = () => {
 
   return (
     <Box p="4" borderRadius="md" width="250px" height="250px">
-      <Button onClick={handleLogout} mb="2">
-        Logout
-      </Button>
-      <Text fontSize="xl" fontWeight="bold" mb="2">
-        Top 5 Artists This Week
+      <Text fontSize="lg" fontWeight="bold" mb="2">
+        Top 3 Soungs This Week
       </Text>
       {loading ? (
         <Box>
@@ -106,37 +103,37 @@ const SpotifyWidget = () => {
           ))}
         </Box>
       ) : (
-        artists.map((artist) => (
-          <Flex
-            key={artist.id}
-            alignItems="center"
-            mb="2"
-            _hover={{ bg: "purple.100" }}
-            borderRadius="md"
-          >
-            <Link href={artist.external_urls.spotify} isExternal>
-              <Image
-                src={artist.images[0]?.url}
-                alt={artist.name}
-                boxSize="50px"
-                mr="4"
-                borderRadius="md"
-              />
-            </Link>
-            <Link href={artist.external_urls.spotify} isExternal>
+        tracks.map((track) => (
+          <Flex key={track.id} alignItems="center" mb="4" wrap="nowrap">
+            <Image
+              src={track.album.images[0]?.url}
+              alt={track.name}
+              boxSize="50px"
+              mr="4"
+            />
+            <Link
+              href={track.external_urls.spotify}
+              isExternal
+              maxWidth="200px"
+            >
               <Button
                 variant="link"
                 colorScheme="black"
                 size="md"
-                borderRadius="md"
-                wordBreak="break-word"
+                textAlign="left"
+                whiteSpace="normal"
+                overflow="hidden"
+                textOverflow="ellipsis"
               >
-                {artist.name}
+                {track.name}
               </Button>
             </Link>
           </Flex>
         ))
       )}
+      {/* <Button onClick={handleLogout} mb="2">
+        Logout
+      </Button> */}
     </Box>
   );
 };
