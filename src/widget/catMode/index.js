@@ -1,7 +1,6 @@
 /*global chrome*/
 import { Flex, Switch, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import "./chromeUtils";
 
 function CatMode() {
   const [isCatMode, setIsCatMode] = useState(false);
@@ -11,12 +10,6 @@ function CatMode() {
       setIsCatMode(catMode === "true");
     }
   }, []);
-
-  //   useEffect(() => {
-  //     chrome.storage.sync.get(['replaceImages'], (result) => {
-  //       setReplaceImages(result.replaceImages);
-  //     });
-  //   }, []);
 
   useEffect(() => {
     const newValue = !isCatMode;
