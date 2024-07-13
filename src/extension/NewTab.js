@@ -9,6 +9,7 @@ export const widgets = [
   <WeatherWidget />,
   <WeatherWidget />,
   <WeatherWidget />,
+  <SpotifyWidget />,
 ];
 
 function NewTab() {
