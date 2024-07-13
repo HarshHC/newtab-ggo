@@ -4,7 +4,12 @@ import DnDWrapper from "../components/DnDWrapper";
 import WeatherWidget from "../widget/weather/weatherWidget";
 import SpotifyWidget from "../widget/spotify/spotfiyWidget";
 
-export const widgets = [<WeatherWidget />, <SpotifyWidget />];
+export const widgets = [
+  <WeatherWidget />,
+  <WeatherWidget />,
+  <WeatherWidget />,
+  <WeatherWidget />,
+];
 
 function NewTab() {
   return (
@@ -23,9 +28,7 @@ function NewTab() {
           Give(a)Go
         </Text>
       </Flex>
-      <Flex>
-        <DnDWrapper />
-      </Flex>
+      <DnDWrapper />
     </Flex>
   );
 }
