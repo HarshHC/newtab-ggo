@@ -1,12 +1,10 @@
 import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import DnDWrapper from "../components/DnDWrapper";
-import WeatherWidget from "../widget/weather/WeatherWidget";
+import WeatherWidget from "../widget/weather/weatherWidget";
+import CatMode from "../widget/catMode";
 import DevJokeGeneratorWidget from "../widget/jokeGenerator/DevJokeGeneratorWidget";
 import SpotifyWidget from "../widget/spotify/SpotfiyWidget";
-import WeatherWidget from "../widget/weather/weatherWidget";
-import SpotifyWidget from "../widget/spotify/spotfiyWidget";
-import CatMode from "../widget/catMode";
 
 export const widgets = [
   <WeatherWidget />,
