@@ -7,7 +7,6 @@ import { getWeatherDescription } from "./weatherDescription";
 const WeatherWidget = () => {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [location, setLocation] = useState({ latitude: null, longitude: null });
   const [city, setCity] = useState("");
 
   useEffect(() => {
@@ -31,43 +30,19 @@ const WeatherWidget = () => {
       }
     };
 
-    const fetchCityName = async (latitude, longitude) => {
+    const fetchLocation = async () => {
       try {
-        const response = await axios.get(
-          `http://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`
-        );
-        const cityName =
-          response.data.address.city ||
-          response.data.address.town ||
-          response.data.address.village ||
-          "Unknown location";
-        setCity(cityName);
+        const response = await axios.get(`https://ipapi.co/json/`);
+        const { city, latitude, longitude } = response.data;
+        setCity(city);
+        fetchWeather(latitude, longitude);
       } catch (error) {
-        console.error("Error fetching city name:", error);
-      }
-    };
-
-    const getLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const { latitude, longitude } = position.coords;
-            setLocation({ latitude, longitude });
-            fetchWeather(latitude, longitude);
-            fetchCityName(latitude, longitude);
-          },
-          (error) => {
-            console.error("Error fetching location:", error);
-            setLoading(false);
-          }
-        );
-      } else {
-        console.error("Geolocation is not supported by this browser.");
+        console.error("Error fetching location data:", error);
         setLoading(false);
       }
     };
 
-    getLocation();
+    fetchLocation();
   }, []);
 
   if (loading) {
