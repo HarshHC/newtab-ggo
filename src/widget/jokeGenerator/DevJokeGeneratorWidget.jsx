@@ -1,4 +1,4 @@
-// src/GeekJokeGenerator.js
+// src/DevJokeGenerator.js
 import React, { useState } from "react";
 import {
   Box,
@@ -11,7 +11,7 @@ import {
 import { RepeatIcon } from "@chakra-ui/icons";
 import axios from "axios";
 
-const GeekJokeGenerator = () => {
+const DevJokeGeneratorWidget = () => {
   const [joke, setJoke] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -19,7 +19,7 @@ const GeekJokeGenerator = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        "https://geek-jokes.sameerkumar.website/api?format=json"
+        "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single"
       );
       setJoke(response.data.joke);
     } catch (error) {
@@ -42,31 +42,31 @@ const GeekJokeGenerator = () => {
       >
         {!joke && (
           <Text fontSize="xl" mb="4">
-            Geek Joke Generator
+            Dev Joke Generator
           </Text>
         )}
         <Button colorScheme="teal" onClick={fetchJoke} mb="4" hidden={!!joke}>
           {loading ? <Spinner size="sm" /> : "Generate Joke"}
         </Button>
         {joke && (
-          <Box mt="4" p="4" borderRadius="md">
+          <Box mt="4" p="4" bg="gray.100" borderRadius="md">
             <Text fontSize="lg">{joke}</Text>
-            <IconButton
-              onClick={fetchJoke}
-              aria-label="Refresh joke"
-              icon={<RepeatIcon />}
-              variant="solid"
-              colorScheme="teal"
-              position="fixed"
-              bottom="16px"
-              right="16px"
-              zIndex="1000"
-            />
           </Box>
         )}
+        <IconButton
+          onClick={fetchJoke}
+          aria-label="Refresh joke"
+          icon={<RepeatIcon />}
+          variant="solid"
+          colorScheme="teal"
+          position="fixed"
+          bottom="16px"
+          right="16px"
+          zIndex="1000"
+        />
       </Box>
     </Center>
   );
 };
 
-export default GeekJokeGenerator;
+export default DevJokeGeneratorWidget;

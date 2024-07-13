@@ -1,14 +1,14 @@
 import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import DnDWrapper from "../components/DnDWrapper";
-import WeatherWidget from "../widget/weather/weatherWidget";
-import SpotifyWidget from "../widget/spotify/spotfiyWidget";
-import GeekJokeGenerator from "../widget/jokeGenerator/jokeGeneratorWidget";
+import WeatherWidget from "../widget/weather/WeatherWidget";
+import DevJokeGeneratorWidget from "../widget/jokeGenerator/DevJokeGeneratorWidget";
+import SpotifyWidget from "../widget/spotify/SpotfiyWidget";
 
 export const widgets = [
   <WeatherWidget />,
   <WeatherWidget />,
-  <GeekJokeGenerator />,
+  <DevJokeGeneratorWidget />,
   <SpotifyWidget />,
 ];
 
