@@ -7,16 +7,18 @@ import { getWeatherDescription } from "./weatherDescription";
 const WeatherWidget = () => {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [location, setLocation] = useState({ latitude: null, longitude: null });
+  const [city, setCity] = useState("");
 
   useEffect(() => {
-    const fetchWeather = async () => {
+    const fetchWeather = async (latitude, longitude) => {
       try {
         const response = await axios.get(
           "https://api.open-meteo.com/v1/forecast",
           {
             params: {
-              latitude: 51.5074, // Latitude for London
-              longitude: -0.1278, // Longitude for London
+              latitude: latitude,
+              longitude: longitude,
               current_weather: true,
             },
           }
@@ -29,7 +31,43 @@ const WeatherWidget = () => {
       }
     };
 
-    fetchWeather();
+    const fetchCityName = async (latitude, longitude) => {
+      try {
+        const response = await axios.get(
+          `http://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`
+        );
+        const cityName =
+          response.data.address.city ||
+          response.data.address.town ||
+          response.data.address.village ||
+          "Unknown location";
+        setCity(cityName);
+      } catch (error) {
+        console.error("Error fetching city name:", error);
+      }
+    };
+
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            setLocation({ latitude, longitude });
+            fetchWeather(latitude, longitude);
+            fetchCityName(latitude, longitude);
+          },
+          (error) => {
+            console.error("Error fetching location:", error);
+            setLoading(false);
+          }
+        );
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+        setLoading(false);
+      }
+    };
+
+    getLocation();
   }, []);
 
   if (loading) {
@@ -74,7 +112,7 @@ const WeatherWidget = () => {
       bg="gray.100"
     >
       <Text fontSize="xl" fontWeight="bold">
-        London
+        {city}
       </Text>
       <Text fontSize="lg">{weatherDescription}</Text>
       <Text fontSize="2xl">{weather.temperature}°C</Text>
