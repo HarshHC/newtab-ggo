@@ -8,7 +8,6 @@ export const widgets = [
   <WeatherWidget />,
   <WeatherWidget />,
   <WeatherWidget />,
-  <WeatherWidget />,
   <SpotifyWidget />,
 ];
 

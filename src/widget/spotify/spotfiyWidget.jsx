@@ -86,7 +86,7 @@ const SpotifyWidget = () => {
   return (
     <Box p="4" borderRadius="md" width="250px" height="250px">
       <Text fontSize="lg" fontWeight="bold" mb="2">
-        Top 3 Soungs This Week
+        Top 3 Songs This Week
       </Text>
       {loading ? (
         <Box>
