@@ -1,19 +1,14 @@
 import { Flex } from "@chakra-ui/react";
-import React, { forwardRef, HTMLAttributes, CSSProperties } from "react";
-
-// export type ItemProps =  {
-//     id: string;
-//     withOpacity?: boolean;
-//     isDragging?: boolean;
-// };
+import React, { forwardRef } from "react";
+import { widgets } from "../extension/NewTab";
 
 const ItemWrapper = forwardRef(
   ({ id, withOpacity, isDragging, style, ...props }, ref) => {
     const itemStyle = {
       opacity: withOpacity ? "0.5" : "1",
       transformOrigin: "50% 50%",
-      height: "200px",
-      width: "200px",
+      height: "250px",
+      width: "250px",
       borderRadius: "10px",
       cursor: isDragging ? "grabbing" : "grab",
       backgroundColor: "#ffffff",
@@ -29,7 +24,7 @@ const ItemWrapper = forwardRef(
 
     return (
       <Flex ref={ref} {...props} style={itemStyle}>
-        {id}
+        {widgets[id - 1]}
       </Flex>
     );
   }

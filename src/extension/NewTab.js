@@ -1,7 +1,9 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import DnDWrapper from "../components/DnDWrapper";
 import WeatherWidget from "../Widgets/weatherWidget/weatherWidget";
+
+export const widgets = [<WeatherWidget />];
 
 function NewTab() {
   return (
@@ -14,21 +16,13 @@ function NewTab() {
     >
       <Flex w="100%" justify="space-between">
         <Text color="white" fontSize="md" fontFamily="monospace">
-          Hey Sanat! 👋
+          Hey Harsh! 👋
         </Text>
         <Text color="white" fontSize="md" fontFamily="monospace">
           Give(a)Go
         </Text>
       </Flex>
       <Flex>
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          height="100vh"
-        >
-          <WeatherWidget />
-        </Box>
         <DnDWrapper />
       </Flex>
     </Flex>

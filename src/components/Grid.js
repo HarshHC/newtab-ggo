@@ -7,7 +7,7 @@ const Grid = ({ children, columns }) => {
       display="grid"
       gridTemplateColumns={`repeat(${columns}, 1fr)`}
       gridGap={5}
-      px="200px"
+      px="100px"
       pt="200px"
       justifyItems="center"
       alignItems="center"
