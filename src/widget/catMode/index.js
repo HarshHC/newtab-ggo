@@ -12,19 +12,23 @@ function CatMode() {
     }
   }, []);
 
+  //   useEffect(() => {
+  //     chrome.storage.sync.get(['replaceImages'], (result) => {
+  //       setReplaceImages(result.replaceImages);
+  //     });
+  //   }, []);
+
   useEffect(() => {
-    chrome.storage?.sync.get(["replaceImages"], (result) => {
-      const newValue = !result.replaceImages;
-      chrome.storage.sync.set({ replaceImages: newValue }, () => {
-        const message = newValue
-          ? "Image replacement is ON"
-          : "Image replacement is OFF";
-        alert(message);
-        chrome.tabs.query({}, (tabs) => {
-          for (let tab of tabs) {
-            chrome.tabs.sendMessage(tab.id, { replaceImages: newValue });
-          }
-        });
+    const newValue = !isCatMode;
+    chrome.storage?.sync.set({ replaceImages: newValue }, () => {
+      const message = newValue
+        ? "Image replacement is ON"
+        : "Image replacement is OFF";
+      alert(message);
+      chrome.tabs.query({}, (tabs) => {
+        for (let tab of tabs) {
+          chrome.tabs.sendMessage(tab.id, { replaceImages: newValue });
+        }
       });
     });
   }, [isCatMode]);
