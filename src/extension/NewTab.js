@@ -1,9 +1,10 @@
 import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import DnDWrapper from "../components/DnDWrapper";
-import WeatherWidget from "../Widgets/weatherWidget/weatherWidget";
+import WeatherWidget from "../widget/weather/weatherWidget";
+import SpotifyWidget from "../widget/spotify/spotfiyWidget";
 
-export const widgets = [<WeatherWidget />];
+export const widgets = [<WeatherWidget />, <SpotifyWidget />];
 
 function NewTab() {
   return (
