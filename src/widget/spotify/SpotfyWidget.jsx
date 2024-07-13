@@ -1,14 +1,6 @@
 // src/SpotifyWidget.js
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Text,
-  Image,
-  Link,
-  Spinner,
-  Button,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Text, Image, Link, Button, Flex } from "@chakra-ui/react";
 import axios from "axios";
 
 const CLIENT_ID = "f24241f76c9745d5b0fe961912a25bfb";

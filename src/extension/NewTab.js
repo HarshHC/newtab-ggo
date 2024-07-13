@@ -4,7 +4,7 @@ import DnDWrapper from "../components/DnDWrapper";
 import WeatherWidget from "../widget/weather/weatherWidget";
 import CatMode from "../widget/catMode";
 import DevJokeGeneratorWidget from "../widget/jokeGenerator/DevJokeGeneratorWidget";
-import SpotifyWidget from "../widget/spotify/SpotfiyWidget";
+import SpotifyWidget from "../widget/spotify/SpotfyWidget";
 
 export const widgets = [
   <WeatherWidget />,
