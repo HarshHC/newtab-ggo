@@ -16,10 +16,12 @@ import {
 import Grid from "./Grid";
 import SortableItem from "./SortableItem";
 import Item from "./ItemWrapper";
+import { widgets } from "../extension/NewTab";
 
 function DnDWrapper() {
+  const numCols = 4;
   const [items, setItems] = useState(
-    Array.from({ length: 8 }, (_, i) => (i + 1).toString())
+    Array.from({ length: widgets.length }, (_, i) => (i + 1).toString())
   );
   const [activeId, setActiveId] = useState(null);
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
@@ -53,13 +55,13 @@ function DnDWrapper() {
       onDragCancel={handleDragCancel}
     >
       <SortableContext items={items} strategy={rectSortingStrategy}>
-        <Grid columns={4}>
+        <Grid columns={numCols}>
           {items.map((id) => (
             <SortableItem key={id} id={id} />
           ))}
         </Grid>
       </SortableContext>
-      <DragOverlay adjustScale style={{ transformOrigin: "0 0 " }}>
+      <DragOverlay adjustScale>
         {activeId ? <Item id={activeId} isDragging /> : null}
       </DragOverlay>
     </DndContext>

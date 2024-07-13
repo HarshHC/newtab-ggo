@@ -1,7 +1,6 @@
-import React, { FC } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import ItemWrapper, { ItemProps } from "./ItemWrapper";
+import ItemWrapper from "./ItemWrapper";
 
 const SortableItem = (props) => {
   const {

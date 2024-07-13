@@ -3,7 +3,12 @@ import React from "react";
 import DnDWrapper from "../components/DnDWrapper";
 import WeatherWidget from "../Widgets/weatherWidget/weatherWidget";
 
-export const widgets = [<WeatherWidget />];
+export const widgets = [
+  <WeatherWidget />,
+  <WeatherWidget />,
+  <WeatherWidget />,
+  <WeatherWidget />,
+];
 
 function NewTab() {
   return (
@@ -22,9 +27,7 @@ function NewTab() {
           Give(a)Go
         </Text>
       </Flex>
-      <Flex>
-        <DnDWrapper />
-      </Flex>
+      <DnDWrapper />
     </Flex>
   );
 }
