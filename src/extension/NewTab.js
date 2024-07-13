@@ -8,7 +8,6 @@ import SpotifyWidget from "../widget/spotify/SpotfiyWidget";
 
 export const widgets = [
   <WeatherWidget />,
-  <WeatherWidget />,
   <DevJokeGeneratorWidget />,
   <CatMode />,
   <SpotifyWidget />,
