@@ -95,7 +95,7 @@ const WeatherWidget = () => {
       borderRadius="lg"
       overflow="hidden"
       textAlign="center"
-      bg="gray.100"
+      alignContent="center"
     >
       <Text fontSize="xl" fontWeight="bold">
         {city}

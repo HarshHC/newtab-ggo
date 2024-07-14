@@ -8,10 +8,10 @@ const Grid = ({ children, columns }) => {
       gridTemplateColumns={`repeat(${columns}, 1fr)`}
       gridGap={5}
       px="100px"
-      pt="100px"
+      pt="150px"
       justifyItems="center"
       alignItems="center"
-      height="80vh"
+      maxH="80vh"
     >
       {children}
     </Flex>

@@ -1,6 +1,14 @@
 // src/SpotifyWidget.js
 import React, { useState, useEffect } from "react";
-import { Box, Text, Image, Link, Button, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Image,
+  Link,
+  Button,
+  Flex,
+  useColorMode,
+} from "@chakra-ui/react";
 import axios from "axios";
 
 const CLIENT_ID = "f24241f76c9745d5b0fe961912a25bfb";
@@ -13,6 +21,8 @@ const SpotifyWidget = () => {
   const [token, setToken] = useState("");
   const [tracks, setTracks] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const { colorMode } = useColorMode();
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -84,7 +94,11 @@ const SpotifyWidget = () => {
         <Box>
           {[...Array(3)].map((_, index) => (
             <Flex key={index} alignItems="center" mb="4">
-              <Box boxSize="50px" bg="gray.200" mr="4" />
+              <Box
+                boxSize="50px"
+                bg={colorMode === "light" ? "gray.200" : "black.200"}
+                mr="4"
+              />
               <Box
                 bg="gray.200"
                 height="20px"

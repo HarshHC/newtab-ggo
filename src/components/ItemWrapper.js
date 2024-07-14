@@ -1,17 +1,19 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, useColorMode } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 import { widgets } from "../extension/NewTab";
 
 const ItemWrapper = forwardRef(
   ({ id, withOpacity, isDragging, style, ...props }, ref) => {
+    const { colorMode } = useColorMode();
+
     const itemStyle = {
       opacity: withOpacity ? "0.5" : "1",
       transformOrigin: "50% 50%",
       height: "250px",
       width: "250px",
       borderRadius: "10px",
-      cursor: isDragging ? "grabbing" : "grab",
-      backgroundColor: "#ffffff",
+      cursor: isDragging ? "grabbing" : "default",
+      backgroundColor: colorMode === "light" ? "#ffffff" : "#1a202c",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
