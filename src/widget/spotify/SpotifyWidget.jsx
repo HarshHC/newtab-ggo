@@ -60,8 +60,12 @@ const SpotifyWidget = () => {
       setTracks(response.data.items);
       setLoading(false);
     } catch (error) {
-      console.error("Error fetching top tracks:", error);
-      setLoading(false);
+      if (error.response && error.response.status === 401) {
+        handleLogout();
+      } else {
+        console.error("Error fetching top tracks:", error);
+        setLoading(false);
+      }
     }
   };
 
@@ -72,6 +76,7 @@ const SpotifyWidget = () => {
   const handleLogout = () => {
     setToken("");
     window.localStorage.removeItem("token");
+    window.location.reload();
   };
 
   if (!token) {

@@ -14,6 +14,7 @@ function GgoSearch() {
       borderRadius="xl"
       placeholder="Give it a go!"
       color="white"
+      autoComplete="off"
       onKeyDown={(e) => {
         if (e.key === "Enter") {
           const value = e.target.value;
