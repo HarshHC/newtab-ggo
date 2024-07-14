@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 
-const CLIENT_ID = "f24241f76c9745d5b0fe961912a25bfb";
+const CLIENT_ID = process.env.REACT_SPOTIFY_CLIENT_ID;
 const REDIRECT_URI = chrome?.identity?.getRedirectURL()
   ? chrome?.identity?.getRedirectURL()
   : "http://localhost:3000";
