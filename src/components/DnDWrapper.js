@@ -18,9 +18,12 @@ import Grid from "./Grid";
 import SortableItem from "./SortableItem";
 import Item from "./ItemWrapper";
 import { widgets } from "../extension/NewTab";
+import { useMediaQuery } from "@chakra-ui/react";
 
 function DnDWrapper() {
-  const numCols = 4;
+  const [isOnMobile] = useMediaQuery("(max-width: 1200px)");
+
+  const numCols = isOnMobile ? 2 : 4;
   const [items, setItems] = useState(
     Array.from({ length: widgets.length }, (_, i) => (i + 1).toString())
   );
