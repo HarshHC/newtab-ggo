@@ -15,7 +15,6 @@ chrome.omnibox.onInputEntered.addListener((text, disposition) => {
   // Base URL for ChatGPT search
   const chatgptUrl = "https://chat.openai.com/?q=";
 
-  // If the input starts with 'g ', redirect to ChatGPT
   const searchUrl = `${chatgptUrl}${encodeURIComponent(text)}`;
 
   // Open the URL in a new tab
