@@ -7,7 +7,6 @@ import {
   Center,
   Spinner,
   IconButton,
-  useColorMode,
 } from "@chakra-ui/react";
 import { RepeatIcon } from "@chakra-ui/icons";
 import axios from "axios";
@@ -15,8 +14,6 @@ import axios from "axios";
 const DevJokeGeneratorWidget = () => {
   const [joke, setJoke] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const { colorMode } = useColorMode();
 
   const fetchJoke = async () => {
     setLoading(true);
@@ -39,8 +36,8 @@ const DevJokeGeneratorWidget = () => {
         textAlign="center"
         p="2"
         borderRadius="md"
-        bg={colorMode === "light" ? "gray.50" : "gray.800"}
         maxH="250px"
+        maxW="250px"
         overflowY="auto"
       >
         {!joke && (
@@ -52,12 +49,7 @@ const DevJokeGeneratorWidget = () => {
           {loading ? <Spinner size="sm" /> : "Generate Joke"}
         </Button>
         {joke && (
-          <Box
-            mt="4"
-            p="4"
-            bg={colorMode === "light" ? "gray.100" : ""}
-            borderRadius="md"
-          >
+          <Box mt="4" p="4" borderRadius="md">
             <Text fontSize="lg">{joke}</Text>
           </Box>
         )}
