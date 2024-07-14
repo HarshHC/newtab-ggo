@@ -5,7 +5,7 @@ import WeatherWidget from "../widget/weather/weatherWidget";
 import DevJokeGeneratorWidget from "../widget/jokeGenerator/DevJokeGeneratorWidget";
 import SpotifyWidget from "../widget/spotify/SpotifyWidget";
 import DarkMode from "../widget/darkMode";
-import GptSearch from "../components/GptSearch";
+import GgoSearch from "../components/GgoSearch";
 
 export const widgets = [
   <WeatherWidget />,
@@ -39,7 +39,7 @@ function NewTab() {
           Give(a)Go
         </Text>
       </Flex>
-      <GptSearch />
+      <GgoSearch />
       <DnDWrapper />
     </Flex>
   );

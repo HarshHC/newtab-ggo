@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Replace Images",
+  "name": "Give(a)Go",
   "version": "1.0",
-  "description": "Replace all images on a page with test.jpg",
+  "description": "Give(a)Go custom new tab page",
   "permissions": ["activeTab", "storage", "tabs"],
   "background": {
     "service_worker": "background.js"

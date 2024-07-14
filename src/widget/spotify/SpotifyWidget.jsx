@@ -1,4 +1,4 @@
-// src/SpotifyWidget.js
+/*global chrome*/
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -12,7 +12,9 @@ import {
 import axios from "axios";
 
 const CLIENT_ID = "f24241f76c9745d5b0fe961912a25bfb";
-const REDIRECT_URI = "http://localhost:3000";
+const REDIRECT_URI = chrome?.identity?.getRedirectURL()
+  ? chrome?.identity?.getRedirectURL()
+  : "http://localhost:3000";
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "token";
 const SCOPES = "user-top-read";
