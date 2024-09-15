@@ -33,7 +33,7 @@ function NewTab() {
     >
       <Flex w="100%" justify="space-between">
         <Text color="white" fontSize="md" fontFamily="monospace">
-          Hey Harsh! 👋
+          Hey Sanat! 👋
         </Text>
         <Text color="white" fontSize="md" fontFamily="monospace">
           Give(a)Go
